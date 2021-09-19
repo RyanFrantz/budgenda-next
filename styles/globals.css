@@ -114,9 +114,7 @@ svg {
 
 /* Style largely lifted from Mozilla's MDN docs. */
 .copy-icon {
-    /* FIXME
-    background: url("../img/copy-to-clipboard.svg") 50% no-repeat;
-    */
+    background: url("../public/img/copy-to-clipboard.svg") 50% no-repeat;
     background-position: 61% 45%;
     background-size: 16px;
     border: 0;
