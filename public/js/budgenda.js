@@ -1,3 +1,4 @@
+const newAdhocMeetingButton = document.getElementById("new-adhoc-meeting");
 
 //
 // Customizing Axes
@@ -214,6 +215,7 @@ function startAgenda() {
   displayTime();
 }
 
+newAdhocMeetingButton.onclick = startAgenda;
 /*
  *  Given a date, return milliseconds since the epoch.
  * Sat Jul 17 2021 16:57:34 GMT-0400 (Eastern Daylight Time)

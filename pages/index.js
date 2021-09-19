@@ -5,6 +5,7 @@ import Script from 'next/script'
 export default function Home() {
   return (
     <div>
+      {/* FIXME: Do we move head into pages/_document.js ? */}
       <Head>
         <title>Budgenda</title>
         <meta name="description" content="Budget your time with smart agenda" />
@@ -16,8 +17,8 @@ export default function Home() {
         <div class="main-container">
             <div class="sidebar">
                 {/* Refresh the page so that we start a new ad hoc meeting. */}
-                <a href="#" title="Ad hoc" onclick="startAgenda();">
-                    <span class="material-icons">bolt</span>
+                <a href="#" title="Ad hoc">
+                    <span id="new-adhoc-meeting" class="material-icons">bolt</span>
                 </a>
                 {/* TODO: Start a presentation-/demo-type meeting.
                 <a href="#" title="Presentation">
