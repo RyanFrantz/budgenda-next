@@ -1,16 +1,195 @@
-html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    /* Be as large as he viewport. */
+    height: 100vh;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.clock {
+    margin: auto;
+}
+#the_clock {
+    font-size: 50px;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+}
+svg {
+    border: 1px solid;
+    border-radius: 5px;
+    margin: 10px 50px;
+    padding: 10px;
+}
+#notes {
+    width: 1200px;
+    margin: 10px 50px;
+    padding: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    min-height: 25px;
+}
+.timeline,
+.tick {
+    cursor: pointer;
+}
+.note {
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    /* Kinda fun.
+    border-top: 1px solid;
+    border-left: 1px solid;
+    */
+    margin: 2px;
+    padding: 2px;
+    /* Prevent this div from spilling over its parent. */
+    width: calc(100% -2px);
+}
+.note:nth-child(even) {
+    margin-left: 10px;
 }
 
-* {
-  box-sizing: border-box;
+.note-detail {
+    padding-left: 2px;
+}
+
+:focus {
+    background-color: #eee;
+}
+
+/* Modal bits from
+ * https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
+*/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    /* Remove border between this and the header. */
+    border-top: 0;
+    width: 80%;
+    min-height: 100px;
+}
+
+.modal-content-header {
+    background-color: #fefefe;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 15px;
+    margin: auto;
+    padding: 20px;
+    width: 80%;
+}
+
+/* The Close Button */
+.modal-close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Style largely lifted from Mozilla's MDN docs. */
+.copy-icon {
+    /* FIXME
+    background: url("../img/copy-to-clipboard.svg") 50% no-repeat;
+    */
+    background-position: 61% 45%;
+    background-size: 16px;
+    border: 0;
+    cursor: pointer;
+    height: 36px;
+    margin: 0;
+    padding: 6px;
+    float: right;
+    vertical-align: middle;
+    width: 33px;
+    z-index: 100;
+}
+
+.help-content {
+    background-color: #fefefe;
+    border-radius: 5px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    min-height: 100px;
+}
+
+#help-message {
+    margin: 10px 50px;
+}
+
+.help-kb-shortcut {
+    float: right;
+}
+
+.command {
+    font-family: 'Courier New', monospace;
+}
+
+.note-attribute {
+    float: right;
+}
+
+.main-container {
+    display: flex;
+    /* Match the body's viewport. */
+    height: 100vh;
+}
+
+.sidebar {
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    height: 95%;
+    margin: 2px;
+}
+
+.sidebar a {
+    color: black;
+    text-decoration: none;
+}
+
+.sidebar .material-icons {
+    border: 1px solid;
+    border-radius: 5px;
+    display: block;
+    margin: 25px;
+    padding: 10px;
+}
+
+.float-right {
+    float: right;
+}
+
+.modal-content-header a {
+    color: black;
+}
+
+#export-notes {
+    float: right;
 }
