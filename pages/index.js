@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Script from 'next/script'
+import Clock from '../components/clock.js';
 
 export default function Home() {
   return (
@@ -37,9 +38,7 @@ export default function Home() {
             </div>
 
             <div class="content">
-                <div class="clock">
-                    <span id="the_clock"></span>
-                </div>
+                <Clock/>
                 <div id="help-message">
                     <p>
                     Click the <span class="material-icons">bolt</span> in the sidebar, or press <code>Ctrl + a</code> to create a new ad hoc meeting.
