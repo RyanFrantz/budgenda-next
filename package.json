@@ -1,16 +1,16 @@
 {
-  "name": "auth0",
+  "name": "budgenda",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "PORT=80 next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.5.0",
-    "next": "11.1.2",
+    "next": "^12.0.10",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
