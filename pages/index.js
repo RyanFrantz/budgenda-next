@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Script from 'next/script'
 import Clock from '../components/clock.js';
+import Sidebar from '../components/sidebar.js';
+import HelpMessage from '../components/help.js';
 
 export default function Home() {
   return (
@@ -16,37 +18,11 @@ export default function Home() {
 
       <main>
         <div class="main-container">
-            <div class="sidebar">
-                {/* Refresh the page so that we start a new ad hoc meeting. */}
-                <a href="#" title="Ad hoc">
-                    <span id="new-adhoc-meeting" class="material-icons">bolt</span>
-                </a>
-                {/* TODO: Start a presentation-/demo-type meeting.
-                <a href="#" title="Presentation">
-                    <span class="material-icons">tv</span>
-                </a>
-                */}
-                {/* TODO: Start a decision-type meeting.
-                <a href="#" title="Decision">
-                    <span class="material-icons">thumbs_up_down</span>
-                </a>
-                */}
-                {/* List all stored meetings. */}
-                <a href="#" title="All Meetings">
-                    <span id="all-meetings-button" class="material-icons">event</span>
-                </a>
-            </div>
+          <Sidebar />
 
             <div class="content">
                 <Clock/>
-                <div id="help-message">
-                    <p>
-                    Click the <span class="material-icons">bolt</span> in the sidebar, or press <code>Ctrl + a</code> to create a new ad hoc meeting.
-                    </p>
-                    <p>Click a tick on the timeline to create a note for that time.
-                    Click anywhere in the timeline box to create a note for "now".</p>
-                    <p>Need help? Press <code>Ctrl + /</code></p>
-                </div>
+                <HelpMessage />
                 <div id="notes">
                 </div>
                 <div id="export-notes-modal" class="modal">
