@@ -4,6 +4,10 @@ import Script from 'next/script'
 import Clock from '../components/clock.js';
 import Sidebar from '../components/sidebar.js';
 import HelpMessage from '../components/help.js';
+import Notes from '../components/notes.js';
+import ExportNotesModal from '../components/export-notes-modal.js';
+import HelpModal from '../components/help-modal.js';
+import AllMeetingsModal from '../components/all-meetings-modal.js';
 
 export default function Home() {
   return (
@@ -19,65 +23,14 @@ export default function Home() {
       <main>
         <div class="main-container">
           <Sidebar />
-
             <div class="content">
                 <Clock/>
                 <HelpMessage />
-                <div id="notes">
-                </div>
-                <div id="export-notes-modal" class="modal">
-                    <div class="modal-content-header">
-                        Press <span class="command">Ctrl + c</span> to select/copy all notes!
-                        <button type="button" id="copy-to-clipboard" class="copy-icon">
-                        </button>
-                        {/* an "x" */}
-                        <span class="modal-close">×</span>
-                    </div>
-                    <div id="modal-content" class="modal-content">
-                        <div id="export-decisions"></div>
-                        <div id="export-follow-up"></div>
-                        <div id="export-meeting-minutes"></div>
-                    </div>
-                </div>
-                <div id="help-modal" class="modal">
-                    <div class="help-content">
-                        <p><b>Keyboard Shortcuts</b></p>
-                        <p>
-                        Clear all modals: <span class="help-kb-shortcut command">Esc</span>
-                        </p>
-                        <p>
-                        Toggle this help screen: <span class="help-kb-shortcut command">Ctrl + /</span>
-                        </p>
-                        <p>
-                        Start an ad hoc meeting: <span class="help-kb-shortcut command">Ctrl + a</span>
-                        </p>
-                        <p>
-                        Copy notes to clipboard (When exporting notes): <span class="help-kb-shortcut command">Ctrl + c</span>
-                        </p>
-                        <p>
-                        Export notes: <span class="help-kb-shortcut command">Ctrl + e</span>
-                        </p>
-                        <p>
-                        List all meetings: <span class="help-kb-shortcut command">Ctrl + m</span>
-                        </p>
-                        <p>
-                        Create a new note (time is "now"): <span class="help-kb-shortcut command">Ctrl + n</span>
-                        </p>
-                    </div>
-                </div>
-                <div id="all-meetings-modal" class="modal">
-                    <div class="modal-content-header">
-                        <span id="all-meetings-modal-close" class="modal-close">×</span>
-                        <a href="#" title="Clear Meetings">
-                            <span id="clear-meetings" class="material-icons float-right">delete</span>
-                        </a>
-                    </div>
-                    <div id="all-meetings-content" class="modal-content">
-                    </div>
-                </div>
-            {/* end "content" */}
+                <Notes />
+                <ExportNotesModal />
+                <HelpModal />
+                <AllMeetingsModal />
             </div>
-        {/* end main-container" */}
         </div>
       </main>
       <Script src="js/d3.v6.min.js" />
