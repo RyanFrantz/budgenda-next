@@ -5,7 +5,7 @@ import Main from '../components/main.js';
 
 export default function Home() {
   return (
-    <div>
+    <>
       {/* FIXME: Do we move head into pages/_document.js ? */}
       <Head>
         <title>Budgenda</title>
@@ -23,6 +23,6 @@ export default function Home() {
       <Script src="js/keyboard-shortcuts.js" />
       <Script src="js/all-meetings.js" />
       <Script src="js/util.js" />
-    </div>
+    </>
   )
 }
