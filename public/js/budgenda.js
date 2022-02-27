@@ -154,7 +154,10 @@ function displayTime() {
     var second   = prefix_zero(today.getSeconds());
     var the_time = `${hour}:${minute}:${second}`;
     document.getElementById('the_clock').innerHTML = the_time;
-    updateTick();
+    /* Disabling this for now as I am exploring what it looks like without
+     * the timeline.
+     */
+    //updateTick();
     refresh_time();
 }
 
@@ -202,7 +205,7 @@ function startAgenda() {
   let now = new Date();
   meetingStart = now;
   createMeetingWatermark(now);
-  buildTimeline();
+  //buildTimeline(); // Let's use this real estate for more of the notes.
   registerClickHandlers(); // js/handlers.js
   addTitleInput();
   addExportButton(); // js/export.js
