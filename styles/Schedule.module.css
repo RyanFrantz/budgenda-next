@@ -1,0 +1,98 @@
+button {
+  cursor: pointer;
+}
+
+#agenda,
+.notes {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border-left: 2px solid; /* Creates the vertical line across all notes. */
+  margin-left: 10px;
+}
+
+.agenda-item {
+  border: 1px solid;
+  margin-left: 5px;
+}
+
+/* Give the clock time some wiggle room. */
+/* Found the correct selector by inspecting the DOM. */
+input[type=time i] {
+  width: 105px;
+}
+
+#meeting-title {
+  margin-bottom: 5px;
+}
+
+nav {
+  width: 90%;
+  border: 1px solid;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.note {
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+
+.time-tick {
+  padding-left: 15px;
+  padding-bottom: 15px;
+}
+
+.time-tick::before {
+  content: '';
+  border: 1px solid;
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  /* Without absolute positioning, the circle looks like a smashed thing.*/
+  position: absolute;
+  left: 15px;
+  background: white;
+}
+
+/* Note when using :nth-of-type on a class selector, it appears the browser
+ * effectively backtracks, finding the element type, then uses that to compute
+ * siblings and order. So if you have a set of <div>s, some of which you are
+ * targetting by class, the browser will count ALL sibling <div>s, regardless
+ * of class, to compute which will match :nth-of-type.
+ * It is safest to be very specific and/or use an explicit element type other
+ * than <div>.
+ */
+.time-tick:nth-of-type(5n+1)::before {
+  height: 18px;
+  width: 18px;
+  left: 9px;
+}
+
+.time-tick:nth-of-type(5n+1)::after {
+  /* Find the data-* (custom) global attribute for the time.*/
+  content: attr(data-time);
+}
+
+.time-tick:hover::after {
+  content: attr(data-time);
+  background: powderblue;
+  cursor: pointer;
+  border: 1px solid;
+  padding: 2px;
+  border-radius: 35%;
+}
+
+.note-detail {
+  margin: 2px;
+  padding: 5px;
+}
+
+.agenda,
+.notes > .note:nth-child(even) {
+  background: lightgray;
+}
+
+.note-detail:hover {
+  background-color: powderblue;
+}
