@@ -170,8 +170,8 @@ export default function Schedule() {
         background: powderblue;
         cursor: pointer;
         border: 1px solid;
-        padding: 2px;
-        border-radius: 35%;
+        padding: 5px;
+        border-radius: 10%;
       }
 
       .note-detail {
