@@ -18,16 +18,19 @@ function initializeDateAndTime() {
 }
 
 // Is there a better/more preferred way to handle this?
-window.addEventListener('load', initializeDateAndTime);
+// 20220911 - We now run this via Script's onLoad attribute in a component.
+//window.addEventListener('load', initializeDateAndTime);
 
 /* Return an ISO8601 string of the date and time selected by the user for
  * this agenda.
  */
+/*
 function getSelectedDateAndTime() {
   const agendaDate = document.querySelector("#agenda-date").value;
   const agendaTime = document.querySelector("#agenda-time").value;
   return `${agendaDate}T${agendaTime}`;
 }
+*/
 
 /*
  *  Given a date, return milliseconds since the epoch.
@@ -35,9 +38,11 @@ function getSelectedDateAndTime() {
  * -to-
  *  1626555454000
  */
+/*
 function epoch(date) {
   return Date.parse(date);
 }
+*/
 
 // Return the time in HH:MM format.
 // If a Date argument is not present, finds the current date.
@@ -63,11 +68,14 @@ function getYmd(date = new Date()) {
   return `${year}-${month}-${day}`;
 }
 
+/*
 function addMinutes(numMinutes, date = new Date()) {
   // setMinutes returns ms since epoch; convert back to Date object.
   return new Date(date.setMinutes(date.getMinutes() + numMinutes));
 }
+*/
 
+/*
 function createAgendaItem(event) {
   const agendaItem = document.createElement("div");
   agendaItem.className = "agenda-item";
@@ -75,7 +83,9 @@ function createAgendaItem(event) {
   // TODO: Add a unique ID so we can keep agenda items sorted.
   event.target.insertAdjacentElement('afterend', agendaItem);
 }
+*/
 
+/*
 function createAgenda() {
   const agendeDateTime = new Date(getSelectedDateAndTime());
   const main = document.querySelector("main");
@@ -87,9 +97,8 @@ function createAgenda() {
   meetingTitle.placeholder = "Meeting Title";
   main.appendChild(meetingTitle);
 
-  /* TODO: Consider adding a custom data-* attribute here for use when storing
-   * the agenda as a whole.
-   */
+  // TODO: Consider adding a custom data-* attribute here for use when storing
+  // the agenda as a whole.
   main.appendChild(agenda);
 
   // Generate a 30-minute agenda, for now.
@@ -105,3 +114,4 @@ function createAgenda() {
     agenda.appendChild(timeslot);
   }
 }
+*/
