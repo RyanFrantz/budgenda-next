@@ -62,6 +62,9 @@ function createAgenda() {
     // NOTE: We need to pass a copy of now, else now's value is updated,
     // by reference, creating an almost Fibonacci-like increase in time values!
     const timeslotDatetime = addMinutes(i, new Date(agendeDateTime));
+    // NOTE: getHhmm() lives in the client-side js/budgenda-schedule.js, is used
+    // below and by the code in js/budgenda-schedule.js#getNiceTime().
+    // Feels a bit kludgy, but works for now.
     timeslot.setAttribute("data-time", getHhmm(timeslotDatetime));
     timeslot.id = `timeslot_${epoch(timeslotDatetime)}`;
     agenda.appendChild(timeslot);
