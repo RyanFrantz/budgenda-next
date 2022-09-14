@@ -91,6 +91,8 @@ export default function Schedule() {
     <style jsx global>{`
       button {
         cursor: pointer;
+        height: 20px;
+        margin: 3px;
       }
 
       #agenda,
@@ -107,10 +109,15 @@ export default function Schedule() {
         margin-left: 5px;
       }
 
+      input {
+        height: 20px;
+      }
+
       /* Give the clock time some wiggle room. */
       /* Found the correct selector by inspecting the DOM. */
       input[type=time i] {
         width: 105px;
+        margin: 3px;
       }
 
       #meeting-title {
