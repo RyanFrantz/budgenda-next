@@ -1,3 +1,4 @@
+//TODO: This code has been ported into a component. Delete this module.
 /* Note to self: I'm focused on building agenda at the moment. Once a rough
  * cut of that support is ready, I'll want to add support for adding notes
  * to support tracking progress during a meeting. Notes will look similar to
