@@ -5,6 +5,7 @@
 
 import Head from 'next/head';
 import Script from 'next/script';
+import TopNav from '../components/topNav.js';
 
 /*
  *  Given a date, return milliseconds since the epoch.
@@ -83,6 +84,7 @@ export default function Schedule() {
         <input type="time" id="agenda-time" name="agenda-time" defaultValue="12:00" />
         <button onClick={createAgenda}>Create Agenda</button>
     </nav>
+    <TopNav/>
     <main>
     </main>
 
