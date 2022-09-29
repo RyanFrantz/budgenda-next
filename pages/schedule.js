@@ -4,7 +4,6 @@
  */
 
 import Head from 'next/head';
-import Script from 'next/script';
 import TopNav from '../components/topNav.js';
 
 /*
@@ -79,16 +78,9 @@ export default function Schedule() {
         <meta name="description" content="Meeting minutes, or it didn't happen!" />
     </Head>
 
-    <nav>
-        <input type="date" id="agenda-date" name="agenda-date" defaultValue="2022-06-28" />
-        <input type="time" id="agenda-time" name="agenda-time" defaultValue="12:00" />
-        <button onClick={createAgenda}>Create Agenda</button>
-    </nav>
     <TopNav/>
     <main>
     </main>
-
-    <Script src="js/budgenda-schedule.js" onLoad={() => {initializeDateAndTime()}}/>
 
     <style jsx global>{`
       button {
