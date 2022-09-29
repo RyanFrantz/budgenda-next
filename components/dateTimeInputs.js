@@ -33,10 +33,12 @@ export default function DateTimeInputs() {
   const [ dateTime, setDateTime ] = useState({date: "2022-09-29", time: "09:00"})
 
   // When this component loads, set the nearest date and time in our inputs.
+  // Set an empty dependency array so this effect only fires on first render.
+  // Avoids the 'Maximum update depth exceeded...' error.
   useEffect(() => {
     const now = new Date();
     setDateTime({date: getYmd(now), time: getNiceTime(now)});
-  });
+  }, []);
 
   return (
     <>
