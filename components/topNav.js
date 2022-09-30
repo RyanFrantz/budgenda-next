@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import DateTimeInputs from './dateTimeInputs.js';
+import AgendaStartDate from './agendaStartDate.js';
+import AgendaStartTime from './agendaStartTime.js';
 //TODO: Don't forget to replace 'createAgenda' button here.
 
 // Prefix a number with 0 if it's less than 10.
@@ -42,26 +43,20 @@ export default function TopNav() {
     setDateTime({date: getYmd(now), time: getNiceTime(now)});
   }, []);
 
-  // Track date and time input values.
-  // Technically, this code works as expected. When selecting a new time, things
-  // seems correct. But selecting seems to fire this code and the date is
-  // assigned to the time value.
-  // TODO: Write functions to update date and time separately.
-  function updateDateTime(event) {
-    switch (event.target.type) {
-      case 'date':
-    console.log(`Date: ${event.target.value}`);
-        setDateTime({date: event.target.value, time: dateTime.time});
-      case 'time':
-    console.log(`Time: ${event.target.value}`);
-        setDateTime({date: dateTime.date, time: event.target.value});
-      break;
-    }
+  // Track date changes.
+  function updateDate(event) {
+    setDateTime({date: event.target.value, time: dateTime.time});
+  }
+
+  // Track time changes.
+  function updateTime(event) {
+    setDateTime({date: dateTime.date, time: event.target.value});
   }
 
   return (
     <nav>
-      <DateTimeInputs date={dateTime.date} time={dateTime.time} onDateTimeChange={updateDateTime}/>
+      <AgendaStartDate date={dateTime.date} onDateChange={updateDate}/>
+      <AgendaStartTime time={dateTime.time} onTimeChange={updateTime}/>
     </nav>
   );
 }
