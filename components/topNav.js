@@ -42,9 +42,26 @@ export default function TopNav() {
     setDateTime({date: getYmd(now), time: getNiceTime(now)});
   }, []);
 
+  // Track date and time input values.
+  // Technically, this code works as expected. When selecting a new time, things
+  // seems correct. But selecting seems to fire this code and the date is
+  // assigned to the time value.
+  // TODO: Write functions to update date and time separately.
+  function updateDateTime(event) {
+    switch (event.target.type) {
+      case 'date':
+    console.log(`Date: ${event.target.value}`);
+        setDateTime({date: event.target.value, time: dateTime.time});
+      case 'time':
+    console.log(`Time: ${event.target.value}`);
+        setDateTime({date: dateTime.date, time: event.target.value});
+      break;
+    }
+  }
+
   return (
     <nav>
-      <DateTimeInputs date={dateTime.date} time={dateTime.time}/>
+      <DateTimeInputs date={dateTime.date} time={dateTime.time} onDateTimeChange={updateDateTime}/>
     </nav>
   );
 }
