@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import AgendaStartDate from './agendaStartDate.js';
 import AgendaStartTime from './agendaStartTime.js';
 import { getYmd, getNiceTime } from './utils.js';
-//TODO: Don't forget to replace 'createAgenda' button here.
 
 export default function TopNav() {
   const [ dateTime, setDateTime ] = useState({date: "2022-09-29", time: "09:00"})
@@ -29,6 +28,7 @@ export default function TopNav() {
     <nav>
       <AgendaStartDate date={dateTime.date} onDateChange={updateDate}/>
       <AgendaStartTime time={dateTime.time} onTimeChange={updateTime}/>
+      <button onClick={() => console.log(JSON.stringify({dateTime}))}>Create Agenda</button>
     </nav>
   );
 }
