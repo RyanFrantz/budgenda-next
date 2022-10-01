@@ -4,7 +4,8 @@
  */
 
 import Head from 'next/head';
-import TopNav from '../components/topNav.js';
+//import TopNav from '../components/topNav.js';
+import ScheduledAgenda from '../components/scheduledAgenda.js';
 
 /*
  *  Given a date, return milliseconds since the epoch.
@@ -78,9 +79,7 @@ export default function Schedule() {
         <meta name="description" content="Meeting minutes, or it didn't happen!" />
     </Head>
 
-    <TopNav/>
-    <main>
-    </main>
+    <ScheduledAgenda/>
 
     <style jsx global>{`
       button {
