@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getYmd, getNiceTime } from './utils.js';
 import TopNav from './topNav.js';
+import MeetingTitle from './meetingTitle.js';
 
 export default function ScheduledAgenda() {
   const [ dateTime, setDateTime ] = useState({date: "2022-09-29", time: "09:00"})
@@ -31,6 +32,7 @@ export default function ScheduledAgenda() {
   return (
     <>
       <TopNav date={dateTime.date} time={dateTime.time} handlers={handlers}/>
+      <MeetingTitle/>
       <main>
       </main>
     </>
