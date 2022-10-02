@@ -6,15 +6,6 @@
 import Head from 'next/head';
 import ScheduledAgenda from '../components/scheduledAgenda.js';
 
-// TODO: Fold this support into the Timeslot component.
-function createAgendaItem(event) {
-  const agendaItem = document.createElement("div");
-  agendaItem.className = "agenda-item";
-  agendaItem.setAttribute("contentEditable", "true");
-  // TODO: Add a unique ID so we can keep agenda items sorted.
-  event.target.insertAdjacentElement('afterend', agendaItem);
-}
-
 export default function Schedule() {
   return (
     <>
