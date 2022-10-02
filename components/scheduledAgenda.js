@@ -5,6 +5,7 @@ import MeetingTitle from './meetingTitle.js';
 
 export default function ScheduledAgenda() {
   const [ dateTime, setDateTime ] = useState({date: "2022-09-29", time: "09:00"})
+  const [ meetingTitle, setMeetingTitle ] = useState('Meeting Title');
 
   // When this component loads, set the nearest date and time in our inputs.
   // Set an empty dependency array so this effect only fires on first render.
@@ -23,17 +24,22 @@ export default function ScheduledAgenda() {
   function updateTime(event) {
     setDateTime({date: dateTime.date, time: event.target.value});
   }
-  const handlers = {
+  const navHandlers = {
     date: updateDate,
     time: updateTime,
     button: () => console.log(`${dateTime.date} ${dateTime.time}`)
   };
 
+  const meetingHandlers = {
+    title: (event) => setMeetingTitle(event.target.value)
+  };
+
   return (
     <>
-      <TopNav date={dateTime.date} time={dateTime.time} handlers={handlers}/>
-      <MeetingTitle/>
+      <TopNav date={dateTime.date} time={dateTime.time} handlers={navHandlers}/>
+      <MeetingTitle title={meetingTitle} handlers={meetingHandlers}/>
       <main>
+        {meetingTitle} scheduled at {dateTime.date} {dateTime.time}
       </main>
     </>
   );
