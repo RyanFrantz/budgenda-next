@@ -7,6 +7,8 @@ import Timeslot from './timeslot.js';
 export default function ScheduledAgenda() {
   const [ dateTime, setDateTime ] = useState({date: "2022-09-29", time: "09:00"})
   const [ meetingTitle, setMeetingTitle ] = useState('Meeting Title');
+  // Init time slot count at 0. When > 0 we'll render time slots.
+  const [ timeSlotCount, setTimeSlotCount ] = useState(1);
 
   // When this component loads, set the nearest date and time in our inputs.
   // Set an empty dependency array so this effect only fires on first render.
@@ -43,7 +45,7 @@ export default function ScheduledAgenda() {
         {meetingTitle} scheduled at {dateTime.date} {dateTime.time}
         <div>
         {
-          range(5).map(n => <Timeslot key={n}/>)
+          range(timeSlotCount).map(n => <Timeslot key={n}/>)
         }
         </div>
       </main>
