@@ -40,7 +40,7 @@ export default function Schedule() {
         margin-left: 10px;
       }
 
-      .agenda-item {
+      .agenda-topic {
         border: 1px solid;
         margin-left: 5px;
       }
