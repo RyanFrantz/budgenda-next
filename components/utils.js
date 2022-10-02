@@ -3,6 +3,16 @@ function prefixZero(num) {
     return num < 10 ? `0${num}` : num;
 }
 
+/*
+ *  Given a date, return milliseconds since the epoch.
+ * Sat Jul 17 2021 16:57:34 GMT-0400 (Eastern Daylight Time)
+ * -to-
+ *  1626555454000
+ */
+function epoch(date) {
+  return Date.parse(date);
+}
+
 // Return the time in HH:MM format.
 // If a Date argument is not present, finds the current date.
 function getHhmm(date = new Date()) {
@@ -33,4 +43,9 @@ function range(size = 1) {
   return [...Array(size).keys()];
 }
 
-export { getYmd, getNiceTime, range };
+const addMinutes = (numMinutes, date = new Date()) => {
+  // setMinutes returns ms since epoch; convert back to Date object.
+  return new Date(date.setMinutes(date.getMinutes() + numMinutes));
+};
+
+export { getYmd, getNiceTime, range, addMinutes, getHhmm, epoch };
