@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { getYmd, getNiceTime, range } from './utils.js';
 import TopNav from './topNav.js';
 import MeetingTitle from './meetingTitle.js';
-import Timeslot from './timeslot.js';
+import Agenda from './agenda.js';
 
 export default function ScheduledAgenda() {
   const [ dateTime, setDateTime ] = useState({date: "2022-09-29", time: "09:00"})
   const [ meetingTitle, setMeetingTitle ] = useState('Meeting Title');
   // Init time slot count at 0. When > 0 we'll render time slots.
-  const [ timeSlotCount, setTimeSlotCount ] = useState(1);
+  const [ timeSlotCount, setTimeSlotCount ] = useState(0);
 
   // When this component loads, set the nearest date and time in our inputs.
   // Set an empty dependency array so this effect only fires on first render.
@@ -30,7 +30,8 @@ export default function ScheduledAgenda() {
   const navHandlers = {
     date: updateDate,
     time: updateTime,
-    button: () => console.log(`${dateTime.date} ${dateTime.time}`)
+    // Deafult to a 30-minute agenda, for now.
+    button: () => setTimeSlotCount(30)
   };
 
   const meetingHandlers = {
@@ -43,11 +44,7 @@ export default function ScheduledAgenda() {
       <MeetingTitle title={meetingTitle} handlers={meetingHandlers}/>
       <main>
         {meetingTitle} scheduled at {dateTime.date} {dateTime.time}
-        <div>
-        {
-          range(timeSlotCount).map(n => <Timeslot key={n}/>)
-        }
-        </div>
+        <Agenda dateTime={dateTime} count={timeSlotCount}/>
       </main>
     </>
   );
