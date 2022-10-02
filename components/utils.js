@@ -27,4 +27,10 @@ function getYmd(date = new Date()) {
   return `${year}-${month}-${day}`;
 }
 
-export { getYmd, getNiceTime };
+// Given a size value, return an array from 0 to that value.
+// Useful for iterating with map(). Like when building time slots for agenda.
+function range(size = 1) {
+  return [...Array(size).keys()];
+}
+
+export { getYmd, getNiceTime, range };

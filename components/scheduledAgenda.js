@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { getYmd, getNiceTime } from './utils.js';
+import { getYmd, getNiceTime, range } from './utils.js';
 import TopNav from './topNav.js';
 import MeetingTitle from './meetingTitle.js';
+import Timeslot from './timeslot.js';
 
 export default function ScheduledAgenda() {
   const [ dateTime, setDateTime ] = useState({date: "2022-09-29", time: "09:00"})
@@ -40,6 +41,11 @@ export default function ScheduledAgenda() {
       <MeetingTitle title={meetingTitle} handlers={meetingHandlers}/>
       <main>
         {meetingTitle} scheduled at {dateTime.date} {dateTime.time}
+        <div>
+        {
+          range(5).map(n => <Timeslot key={n}/>)
+        }
+        </div>
       </main>
     </>
   );
