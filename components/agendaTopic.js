@@ -1,7 +1,12 @@
 // An agenda topic of arbitrary size.
 
-export default function AgendaTopic() {
+export default function AgendaTopic({time}) {
   return (
-    <div className="agenda-topic" contentEditable={true}></div>
+    <>
+      <span>{time}</span>
+      <div className="agenda-topic" id={`topic_${time}`}
+        contentEditable={true}>
+      </div>
+      </>
   );
 }
