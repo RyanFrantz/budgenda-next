@@ -36,6 +36,20 @@ export default function Schedule() {
         margin-left: 5px;
       }
 
+      .container {
+        min-height: 100vh;
+        padding: 4rem 0;
+        /*
+        * Parroting create-next-app styling.
+        * Center-flexing breaks the styling of the vertical line in the agenda.
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        jusitfy-content: center;
+        align-items: center;
+        */
+      }
+
       input {
         height: 20px;
       }
