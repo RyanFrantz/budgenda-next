@@ -5,8 +5,18 @@
 
 import Head from 'next/head';
 import ScheduledAgenda from '../components/scheduledAgenda.js';
+import { useEffect } from 'react';
+import keyboardShortcuts from '../handlers/keyboardShortcuts.js';
 
 export default function Schedule() {
+  useEffect(() => {
+    document.addEventListener('keydown', keyboardShortcuts);
+    // Cleanup code. Avoids re-registering the same handler on each render.
+    return () => {
+      document.removeEventListener('keydown', keyboardShortcuts);
+    };
+  }, []);
+
   return (
     <>
     <Head>
@@ -38,7 +48,7 @@ export default function Schedule() {
 
       .container {
         min-height: 100vh;
-        padding: 4rem 0;
+        padding: 2rem 0;
         /*
         * Parroting create-next-app styling.
         * Center-flexing breaks the styling of the vertical line in the agenda.
