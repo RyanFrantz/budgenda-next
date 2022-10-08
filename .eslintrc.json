@@ -1,3 +1,8 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    // Temp disable these rules so we can convert to Next.
+    "react/no-unknown-property": ["off"],
+    "react/no-unescaped-entities": ["off"]
+  }
 }
