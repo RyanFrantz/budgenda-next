@@ -40,7 +40,10 @@ export default function ScheduledAgenda() {
 
   return (
     <div className="container">
-      <TopNav date={dateTime.date} time={dateTime.time} handlers={navHandlers}/>
+      <TopNav
+        date={dateTime.date} time={dateTime.time}
+        handlers={navHandlers} count={timeSlotCount}
+      />
       <MeetingTitle title={meetingTitle} handlers={meetingHandlers}/>
       <main>
         {meetingTitle} scheduled at {dateTime.date} {dateTime.time}
