@@ -13,7 +13,9 @@ export default function TopNav({date, time, handlers, count}) {
       <AgendaStartTime time={time} onTimeChange={handlers.time}/>
       <button onClick={handlers.button}>Create Agenda</button>
       {/* When time slot count > 0, show the save button */}
-      {count > 0 && <button>Save Agenda</button>}
+      {count > 0 &&
+        <button onClick={handlers.save}>Save Agenda</button>
+      }
     </nav>
   );
 }

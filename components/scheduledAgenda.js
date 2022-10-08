@@ -31,7 +31,8 @@ export default function ScheduledAgenda() {
     date: updateDate,
     time: updateTime,
     // Deafult to a 30-minute agenda, for now.
-    button: () => setTimeSlotCount(30)
+    button: () => setTimeSlotCount(30),
+    save: () => console.log("I'm saving!")
   };
 
   const meetingHandlers = {
