@@ -27,12 +27,19 @@ export default function ScheduledAgenda() {
   function updateTime(event) {
     setDateTime({date: dateTime.date, time: event.target.value});
   }
+
+  // Write the agenda to localStorage.
+  const saveAgenda = () => {
+    console.log("I'm saving!");
+    localStorage.setItem('budgenda', JSON.stringify(new Date()));
+  };
+
   const navHandlers = {
     date: updateDate,
     time: updateTime,
     // Deafult to a 30-minute agenda, for now.
     button: () => setTimeSlotCount(30),
-    save: () => console.log("I'm saving!")
+    save: saveAgenda
   };
 
   const meetingHandlers = {
