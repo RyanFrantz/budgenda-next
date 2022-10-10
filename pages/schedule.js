@@ -42,7 +42,7 @@ export default function Schedule() {
       }
 
       .agenda-topic {
-        border: 1px solid;
+        border-bottom: 1px solid;
         margin-left: 5px;
       }
 
@@ -69,6 +69,10 @@ export default function Schedule() {
       input[type=time i] {
         width: 105px;
         margin: 3px;
+      }
+
+      :focus {
+        background-color: #eee;
       }
 
       #meeting-title {
