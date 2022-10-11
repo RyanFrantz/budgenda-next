@@ -5,19 +5,18 @@ import { useEffect, useRef } from 'react';
 // TODO: Once I get this working, extract it to a separate module as this
 // functionality will be useful for notes taken during a meeting.
 const setCursor = (event) => {
-  console.log(`Focusing on ${event.target.id}`);
   // The node for which this handler was called on.
   const node = event.target;
   // Get the current position of the caret.
-  const selection = window.getSelection();
-  console.log(`Selection: ${selection.toString()} END`);
-  const offset = 1;
-  /* By calling collapse() with the node element in the event target, we can
+  const selection = document.getSelection();
+  /* By calling collapse() with the node element from the event target, we can
    * tell the browser to blink the caret there.
    * Per https://developer.mozilla.org/en-US/docs/Web/API/Selection/collapse:
    * If the content is focused and editable, the caret will blink there.
+   * NOTE: Without styling the element, the cursor may not be visible. Ensure
+   * some amount of padding is defined so that the cursor is visible.
    */
-  //selection.collapse(node, offset);
+  selection.collapse(node);
 };
 
 // An editable block used to define an agenda topic.

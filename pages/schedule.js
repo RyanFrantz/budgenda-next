@@ -44,6 +44,8 @@ export default function Schedule() {
       .agenda-topic {
         border-bottom: 1px solid;
         margin-left: 5px;
+        /* Padding is required to make the cursor visible. */
+        padding: 0.25rem;
       }
 
       .container {
