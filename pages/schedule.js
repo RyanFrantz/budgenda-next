@@ -48,6 +48,11 @@ export default function Schedule() {
         padding: 0.25rem;
       }
 
+      /* Remove the bulky outline we see on inputs. */
+      .agenda-topic:focus {
+        outline: none;
+      }
+
       .container {
         min-height: 100vh;
         padding: 2rem 0;
