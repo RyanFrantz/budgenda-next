@@ -1,10 +1,5 @@
 import Timeslot from './timeslot.js';
-import { range, addMinutes, getHhmm, epoch } from './utils.js';
-
-// Given our dateTime object, return a string that can be parsed by Date.
-const parseableDateTime = (dateTime) => {
-  return `${dateTime.date}T${dateTime.time}`
-};
+import { range, addMinutes, getHhmm, epoch, parseableDateTime } from './utils.js';
 
 // Generate all the agenda's time slots.
 const generateTimeSlots = (count, dateTime) => {

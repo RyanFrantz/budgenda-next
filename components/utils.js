@@ -47,5 +47,13 @@ const addMinutes = (numMinutes, date = new Date()) => {
   // setMinutes returns ms since epoch; convert back to Date object.
   return new Date(date.setMinutes(date.getMinutes() + numMinutes));
 };
+//
+// Given our dateTime object, return a string that can be parsed by Date.
+const parseableDateTime = (dateTime) => {
+  return `${dateTime.date}T${dateTime.time}`
+};
 
-export { getYmd, getNiceTime, range, addMinutes, getHhmm, epoch };
+export {
+  getYmd, getNiceTime, range, addMinutes,
+  getHhmm, epoch, parseableDateTime
+};
