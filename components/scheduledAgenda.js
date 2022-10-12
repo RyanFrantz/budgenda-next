@@ -30,8 +30,15 @@ export default function ScheduledAgenda() {
 
   // Write the agenda to localStorage.
   const saveAgenda = () => {
-    console.log("I'm saving!");
-    localStorage.setItem('budgenda', JSON.stringify(new Date()));
+    let agenda = {
+      topics: []
+    };
+    // Select all the agenda topics so that we can store them.
+    const agendaTopics = document.querySelectorAll('.agenda-topic');
+    for (const topic of agendaTopics) {
+      agenda.topics.push(topic.outerHTML);
+    }
+    localStorage.setItem('budgenda', JSON.stringify(agenda));
   };
 
   const navHandlers = {
