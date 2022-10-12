@@ -18,7 +18,7 @@ export default function AgendaTopic({dateTime}) {
 
   return (
     <div>
-      <label for={id}>{time}</label>
+      <label htmlFor={id}>{time}</label>
       <div className="agenda-topic" id={id}
         contentEditable={true} tabIndex="0" ref={topicRef}
       >
