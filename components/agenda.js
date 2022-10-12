@@ -1,5 +1,5 @@
 import Timeslot from './timeslot.js';
-import { range, addMinutes, getHhmm, epoch, parseableDateTime } from './utils.js';
+import { range, addMinutes, parseableDateTime } from './utils.js';
 
 // Generate all the agenda's time slots.
 const generateTimeSlots = (count, dateTime) => {
@@ -9,10 +9,8 @@ const generateTimeSlots = (count, dateTime) => {
     // NOTE: We need to pass a copy of the date, else the original date's value
     // is updated, by reference, creating an almost Fibonacci-like increase
     // in time values!
-    const timeSlotDateTime = addMinutes(n, new Date(agendaStart));
-    const dataTime = getHhmm(timeSlotDateTime);
-    const id = `timeslot_${epoch(timeSlotDateTime)}`;
-    return <Timeslot id={id} dataTime={dataTime} key={n}/>
+    const timeslotDateTime = addMinutes(n, new Date(agendaStart));
+    return <Timeslot dateTime={timeslotDateTime} key={n}/>
   });
   return slots;
 };
