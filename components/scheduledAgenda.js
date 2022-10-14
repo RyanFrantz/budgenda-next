@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getYmd, getNiceTime, range } from './utils.js';
+import { getYmd, getNiceTime, range, parseableDateTime, epoch } from './utils.js';
 import TopNav from './topNav.js';
 import MeetingTitle from './meetingTitle.js';
 import Agenda from './agenda.js';
@@ -30,7 +30,10 @@ export default function ScheduledAgenda() {
 
   // Write the agenda to localStorage.
   const saveAgenda = () => {
+    let allMeetings = JSON.parse(localStorage.getItem('budgenda')) || {};
+    const meetingKey = epoch(parseableDateTime(dateTime));
     let agenda = {
+      title: meetingTitle,
       topics: []
     };
     // Select all the agenda topics so that we can store them.
@@ -38,9 +41,12 @@ export default function ScheduledAgenda() {
     for (const topic of agendaTopics) {
       agenda.topics.push(topic.outerHTML);
     }
-    localStorage.setItem('budgenda', JSON.stringify(agenda));
+    allMeetings[meetingKey] = agenda;
+    localStorage.setItem('budgenda', JSON.stringify(allMeetings));
   };
 
+  // TODO: If at least one of date or time are updated, we should clear all
+  // content (e.g. topics) on re-render.
   const navHandlers = {
     date: updateDate,
     time: updateTime,
