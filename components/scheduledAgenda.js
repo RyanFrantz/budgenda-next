@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getYmd, getNiceTime, range, parseableDateTime, epoch } from './utils.js';
+import AllMeetingsModal from './all-meetings-modal.js'; // TODO: camelCase
 import TopNav from './topNav.js';
 import MeetingTitle from './meetingTitle.js';
 import Agenda from './agenda.js';
@@ -61,6 +62,7 @@ export default function ScheduledAgenda() {
 
   return (
     <div className="container">
+      <AllMeetingsModal/>
       <TopNav
         date={dateTime.date} time={dateTime.time}
         handlers={navHandlers} count={timeSlotCount}
