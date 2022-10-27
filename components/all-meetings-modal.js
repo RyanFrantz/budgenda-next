@@ -1,13 +1,32 @@
+import { useEffect } from 'react';
+
 export default function AllMeetingsModal() {
+  const openModal = (event) => {
+    if (event.ctrlKey && (event.key == 'm')) {
+      event.stopPropagation();
+      event.preventDefault();
+      console.log('New "m" handler!');
+    }
+  };
+
+  const noDeps = []; // Clarify what we're doing at the end of useEffect().
+  useEffect(() => {
+    document.addEventListener('keydown', openModal);
+    // Cleanup code. Avoids re-registering the same handler on each render.
+    return () => {
+      document.removeEventListener('keydown', openModal);
+    };
+  }, noDeps);
+
   return (
-    <div id="all-meetings-modal" class="modal">
-      <div class="modal-content-header">
-        <span id="all-meetings-modal-close" class="modal-close">×</span>
+    <div id="all-meetings-modal" className="modal">
+      <div className="modal-content-header">
+        <span id="all-meetings-modal-close" className="modal-close">×</span>
         <a href="#" title="Clear Meetings">
-        <span id="clear-meetings" class="material-icons float-right">delete</span>
+        <span id="clear-meetings" className="material-icons float-right">delete</span>
         </a>
       </div>
-      <div id="all-meetings-content" class="modal-content"></div>
+      <div id="all-meetings-content" className="modal-content"></div>
 
       <style jsx global>{`
         /* Modal bits from
