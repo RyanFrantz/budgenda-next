@@ -1,11 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import AllMeetingsContent from './allMeetingsContent.js';
 
 export default function AllMeetingsModal() {
+  const modalRef = useRef(null);
+
   const openModal = (event) => {
     if (event.ctrlKey && (event.key == 'm')) {
       event.stopPropagation();
       event.preventDefault();
-      console.log('New "m" handler!');
+      // Make the modal visible via the reference we have to it.
+      modalRef.current.style.display = "block";
     }
   };
 
@@ -19,14 +23,14 @@ export default function AllMeetingsModal() {
   }, noDeps);
 
   return (
-    <div id="all-meetings-modal" className="modal">
+    <div id="all-meetings-modal" className="modal" ref={modalRef}>
       <div className="modal-content-header">
         <span id="all-meetings-modal-close" className="modal-close">×</span>
         <a href="#" title="Clear Meetings">
         <span id="clear-meetings" className="material-icons float-right">delete</span>
         </a>
       </div>
-      <div id="all-meetings-content" className="modal-content"></div>
+      <AllMeetingsContent/>
 
       <style jsx global>{`
         /* Modal bits from
