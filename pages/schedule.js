@@ -20,7 +20,8 @@ export default function Schedule() {
   return (
     <>
     <Head>
-        <meta name="description" content="Meeting minutes, or it didn't happen!" />
+      <meta name="description" content="Meeting minutes, or it didn't happen!" />
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     </Head>
 
     <ScheduledAgenda/>
