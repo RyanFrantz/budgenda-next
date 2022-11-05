@@ -6,12 +6,18 @@ import { getYmd, getHhmm } from './utils.js';
 */
 // meetingStart is ms since epoch.
 export default function MeetingLink({meetingStart, title}) {
-  console.log(meetingStart);
+  const openMeeting = (e) => {
+    console.log(`Meeting ID: ${e.target.id}`);
+  };
+
   const d = new Date(Number.parseInt(meetingStart));
   return (
     // TODO: Add a click handler that will load the given meeting.
-    <p id="`meeting_${meetingStart}`">
-    {getYmd(d)} {getHhmm(d)} {title}
+    <p className="meeting-link">
+    {/* FIXME: Use Link here? Link to a page like /meeting ? */}
+      <a href="#" id={meetingStart} onClick={openMeeting}>
+      {getYmd(d)} {getHhmm(d)} {title}
+      </a>
     </p>
   );
 }
