@@ -17,7 +17,7 @@ export default function AllMeetingsContent() {
     const meetingKeys = Object.keys(meetings);
     const meetingLinks = meetingKeys.map(k => {
       const meeting = meetings[k];
-      return <MeetingLink meetingStart={k} title={meeting.title}/>
+      return <MeetingLink key={k} meetingStart={k} title={meeting.title}/>
     });
     // FIXME: The modal should be updated when the localstorage is updated.
     return meetingLinks;

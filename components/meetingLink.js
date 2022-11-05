@@ -10,7 +10,7 @@ export default function MeetingLink({meetingStart, title}) {
   const d = new Date(Number.parseInt(meetingStart));
   return (
     // TODO: Add a click handler that will load the given meeting.
-    <p key={meetingStart} id="`meeting_${meetingStart}`">
+    <p id="`meeting_${meetingStart}`">
     {getYmd(d)} {getHhmm(d)} {title}
     </p>
   );
