@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { getYmd, getHhmm } from './utils.js';
 /*
 * Given a saved meeting's start time (ms since epoch) and the details
@@ -6,18 +7,23 @@ import { getYmd, getHhmm } from './utils.js';
 */
 // meetingStart is ms since epoch.
 export default function MeetingLink({meetingStart, title}) {
-  const openMeeting = (e) => {
-    console.log(`Meeting ID: ${e.target.id}`);
+  // NOTE: Link overrides onClick so we have to assign this handler on an 'a'
+  // element that is a child of Link.
+  const todoSaveAgenda = (e) => {
+    console.log("Remember to save an agenda here!");
   };
 
   const d = new Date(Number.parseInt(meetingStart));
+  const target = `/meeting/${meetingStart}`;
+  const linkTitle = `${getYmd(d)} ${getHhmm(d)} ${title}`;
   return (
-    // TODO: Add a click handler that will load the given meeting.
+    // TODO: Be sure to save an agenda if one is being updated.
     <p className="meeting-link">
-    {/* FIXME: Use Link here? Link to a page like /meeting ? */}
-      <a href="#" id={meetingStart} onClick={openMeeting}>
-      {getYmd(d)} {getHhmm(d)} {title}
-      </a>
+      <Link href={target}>
+        <a onClick={todoSaveAgenda}>
+          {linkTitle}
+        </a>
+      </Link>
     </p>
   );
 }
