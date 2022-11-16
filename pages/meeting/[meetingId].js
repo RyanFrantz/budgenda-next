@@ -29,15 +29,19 @@ export default function Meeting() {
     return meetings[meetingId]?.title || "Untitled";
   };
 
+  // Return meeting topics in an object that can be applied via
+  // dangerouslySetInnerHTML attribute of a React element.
   const meetingTopics = (meetingId) => {
     const meetings = getMeetings();
-    return meetings[meetingId]?.topics;
+    return {
+      __html: meetings[meetingId]?.topics
+    }
   };
 
   return (
     <>
     <h1>{title} {meetingId}</h1>
-    <div className="topics">{topics}</div>
+    <div className="topics" dangerouslySetInnerHTML={topics}></div>
     </>
   );
 };
