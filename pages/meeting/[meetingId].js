@@ -6,6 +6,7 @@ export default function Meeting() {
   //const { meetingId } = router.query;
   const [ meetingId, setMeetingId ] = useState(null);
   const [ title, setTitle ] = useState(null);
+  const [ topics, setTopics ] = useState(null);
 
   // Wait until router is ready so we can extract the route parameter.
   //https://github.com/vercel/next.js/discussions/12661#discussioncomment-360764
@@ -14,6 +15,7 @@ export default function Meeting() {
     const { meetingId } = router.query;
     setMeetingId(meetingId);
     setTitle(meetingTitle(meetingId));
+    setTopics(meetingTopics(meetingId));
   }, [router.isReady]);
 
   // FIXME: This function exists in components/allMeetingsModal.js; extract it.
@@ -24,10 +26,18 @@ export default function Meeting() {
 
   const meetingTitle = (meetingId) => {
     const meetings = getMeetings();
-    return meetings[meetingId].title;
+    return meetings[meetingId]?.title || "Untitled";
+  };
+
+  const meetingTopics = (meetingId) => {
+    const meetings = getMeetings();
+    return meetings[meetingId]?.topics;
   };
 
   return (
-    <h1>Meeting {meetingId} {title}</h1>
+    <>
+    <h1>{title} {meetingId}</h1>
+    <div className="topics">{topics}</div>
+    </>
   );
 };
