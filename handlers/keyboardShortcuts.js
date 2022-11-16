@@ -10,15 +10,32 @@ export default function keyboardShortcuts(event) {
     }
   }
 
+  if (event.metaKey) {
+    switch (event.key) {
+      // This works on Chromebook as search key + t
+      case 't':
+        //event.preventDefault();
+        console.log('Create topic');
+        break;
+      default:
+        //console.log(event.key); // Debug
+        break;
+    }
+  }
+
   if (event.ctrlKey) {
     // Ctrl + /
     switch (event.key) {
       case '/':
+        event.preventDefault();
+        console.log('Calling help!');
         // Toggle help modal.
+        /*
         helpModal.style.display =
           // On first page load, inline style is empty.
           (helpModal.style.display.length === 0 ||
             helpModal.style.display === "none") ? "block": "none";
+        */
         break;
       case 'a':
         // Start an ad hoc meeting.
@@ -33,16 +50,13 @@ export default function keyboardShortcuts(event) {
       case 'e':
         // Open the export modal.
         //openExportModal();
+        event.preventDefault();
         console.log('Open export modal');
-        break;
-      case 'm':
-        // Open the meetings modal.
-        //openMeetingsModal();
-        console.log('Open meetings modal');
         break;
       case 'n':
         // Create a new note at time "now".
         //createNote(new Date());
+        event.preventDefault();
         console.log('Create note');
         break;
       default:
