@@ -33,15 +33,11 @@ export default function ScheduledAgenda() {
   const saveAgenda = () => {
     let allMeetings = JSON.parse(localStorage.getItem('budgenda')) || {};
     const meetingKey = epoch(parseableDateTime(dateTime));
+    const agendaHtml = document.getElementById('agenda').outerHTML;
     let agenda = {
       title: meetingTitle,
-      topics: []
+      body: agendaHtml
     };
-    // Select all the agenda topics so that we can store them.
-    const agendaTopics = document.querySelectorAll('.agenda-topic');
-    for (const topic of agendaTopics) {
-      agenda.topics.push(topic.outerHTML);
-    }
     allMeetings[meetingKey] = agenda;
     localStorage.setItem('budgenda', JSON.stringify(allMeetings));
   };
