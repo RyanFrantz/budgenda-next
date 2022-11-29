@@ -18,6 +18,21 @@ export default function Meeting() {
     setTopics(meetingTopics(meetingId));
   }, [router.isReady]);
 
+  const createNote = (event) => {
+    if (event.metaKey && (event.key == 'n')) {
+      event.stopPropagation();
+      event.preventDefault();
+      console.log(`Creating new note at ${new Date()}`);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', createNote);
+    return () => {
+      document.removeEventListener('keydown', createNote);
+    };
+  }, []);
+
   // FIXME: This function exists in components/allMeetingsModal.js; extract it.
   const getMeetings = () => {
     const meetings = JSON.parse(localStorage.getItem('budgenda')) || {};
